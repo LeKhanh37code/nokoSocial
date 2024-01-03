@@ -11,7 +11,8 @@ router.patch('/user', auth, userCtrl.updateUser)
 
 router.patch('/user/:id/follow', auth, userCtrl.follow)
 router.patch('/user/:id/unfollow', auth, userCtrl.unfollow)
-
+router.patch('/user/:id/dating', auth, userCtrl.dating)
+router.patch('/user/:id/updating', auth, userCtrl.updating)
 router.get('/suggestionsUser', auth, userCtrl.suggestionsUser)
 
 

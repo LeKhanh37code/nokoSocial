@@ -94,6 +94,15 @@ const SocketServer = (socket) => {
     user && socket.to(`${user.socketId}`).emit("followToClient", newUser);
   });
 
+  socket.on("dating", (newUser) => {
+    const user = users.find((user) => user.id === newUser._id);
+    user && socket.to(`${user.socketId}`).emit("datingToClient", newUser);
+  });
+
+  socket.on("updating", (newUser) => {
+    const user = users.find((user) => user.id === newUser._id);
+    user && socket.to(`${user.socketId}`).emit("updatingToClient", newUser);
+  });
   socket.on("unFollow", (newUser) => {
     const user = users.find((user) => user.id === newUser._id);
     user && socket.to(`${user.socketId}`).emit("unFollowToClient", newUser);

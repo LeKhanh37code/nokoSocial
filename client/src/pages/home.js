@@ -199,12 +199,12 @@ const Home = () => {
 
       <div className="middle">
 
-      <h1>Story</h1>
+      {/* <h1>Story</h1>
       <div class="stories">
                     <div class="story">
                         <div class="profile-photo">
                           <img src={auth.user.avatar}></img>
-                            {/* <img src="/client/src/images/profile-1.jpg" alt=""/> */}
+                          
                         </div>
                         <p class="name">Your Story</p>
                     </div>
@@ -238,7 +238,9 @@ const Home = () => {
                         </div>
                         <p class="name">Cheft Curry</p>
                     </div>
-                </div>
+                </div> */}
+        
+        
 
         <Status />
 

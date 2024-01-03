@@ -19,6 +19,7 @@ const StatusModal = () => {
 
     const handleChangeImages = e => {
         const files = [...e.target.files]
+        console.log(files)
         let err = ""
         let newImages = []
 
@@ -100,6 +101,8 @@ const StatusModal = () => {
             setImages(status.images)
         }
     },[status])
+
+
 
 
    
@@ -185,7 +188,7 @@ const StatusModal = () => {
 
                                         <div className="file_upload">
                                             <i className="far fa-file-image" />
-                                            <input type="file" name="file" id="file"
+                                            <input type="file" name="file" id="file" 
                                             multiple accept="image/*,video/*" onChange={handleChangeImages} />
                                         </div>
                                     </>

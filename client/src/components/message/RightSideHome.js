@@ -87,7 +87,7 @@ const RightSideHome = () => {
       dispatch({ type: MESS_TYPES.CHECK_ONLINE_OFFLINE, payload: online });
     }
   }, [online, message.firstLoad, dispatch]);
-
+  console.log(searchUsers);
   return (
     <>
       <div class="messages1">

@@ -22,7 +22,7 @@ const Profile = () => {
             dispatch(getProfileUsers({id, auth}))
         }
     },[id, auth, dispatch, profile.ids])
-
+    console.log(profile)
     return (
         <div className="profile">
             <div className='profile-left'>

@@ -30,6 +30,12 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 users: EditData(state.users, action.payload._id, action.payload)
             };
+            case PROFILE_TYPES.DATE:
+                return {
+                    ...state,
+                    users: EditData(state.users, action.payload._id, action.payload)
+                };
+            
         case PROFILE_TYPES.GET_ID:
             return {
                 ...state,

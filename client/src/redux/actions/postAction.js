@@ -9,7 +9,8 @@ export const POST_TYPES = {
     GET_POSTS: 'GET_POSTS',
     UPDATE_POST: 'UPDATE_POST',
     GET_POST: 'GET_POST',
-    DELETE_POST: 'DELETE_POST'
+    DELETE_POST: 'DELETE_POST',
+    CREATE_POST_DATE:'CREATE_POST_DATE'
 }
 
 
@@ -18,6 +19,7 @@ export const createPost = ({content, images, auth, socket}) => async (dispatch) 
     try {
         dispatch({ type: GLOBALTYPES.ALERT, payload: {loading: true} })
         if(images.length > 0) media = await imageUpload(images)
+        console.log(media)
 
         const res = await postDataAPI('posts', { content, images: media }, auth.token)
 
@@ -47,6 +49,47 @@ export const createPost = ({content, images, auth, socket}) => async (dispatch) 
         })
     }
 }
+
+export const createPostDate = ({content,  auth, socket}) => async (dispatch) => {
+    let media = [{
+        public_id:'noko-social/12312312312312312',
+        url:"https://img.freepik.com/free-vector/virtual-relationships-online-dating-cartoon-illustration_1284-58111.jpg"
+    }]
+    try {
+        dispatch({ type: GLOBALTYPES.ALERT, payload: {loading: true} })
+        // if(images.length > 0) media = await imageUpload(images)
+        console.log(media)
+
+        const res = await postDataAPI('posts', { content, images: media }, auth.token)
+
+        dispatch({ 
+            type: POST_TYPES.CREATE_POST_DATE, 
+            payload: {...res.data.newPost, user: auth.user} 
+        })
+
+        dispatch({ type: GLOBALTYPES.ALERT, payload: {loading: false} })
+
+        // Notify
+        const msg = {
+            id: res.data.newPost._id,
+            text: 'Just updated  dating status',
+            recipients: res.data.newPost.user.followers,
+            url: `/post/${res.data.newPost._id}`,
+            content, 
+            image: media[0].url
+        }
+
+        dispatch(createNotify({msg, auth, socket}))
+
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: {error: err.response.data.msg}
+        })
+    }
+}
+
+
 
 export const getPosts = (token) => async (dispatch) => {
     try {

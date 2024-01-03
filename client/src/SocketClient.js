@@ -82,6 +82,23 @@ const SocketClient = () => {
     return () => socket.off("unFollowToClient");
   }, [socket, dispatch, auth]);
 
+  // Date
+  useEffect(() => {
+    socket.on("datingToClient", (newUser) => {
+      dispatch({ type: GLOBALTYPES.AUTH, payload: { ...auth, user: newUser } });
+    });
+
+    return () => socket.off("dateToClient");
+  }, [socket, dispatch, auth]);
+
+
+  useEffect(() => {
+    socket.on("updatingToClient", (newUser) => {
+      dispatch({ type: GLOBALTYPES.AUTH, payload: { ...auth, user: newUser } });
+    });
+
+    return () => socket.off("updatingToClient");
+  }, [socket, dispatch, auth]);
   // Notification
   useEffect(() => {
     socket.on("createNotifyToClient", (msg) => {

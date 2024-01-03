@@ -28,6 +28,7 @@ const Header = () => {
         <div class="create">
           {/* <label class="btn btn-primary" for="create-post">Create</label> */}
           <div class="profile-photo">
+       
             {/* <img src="./images/profile-1.jpg" alt=""> */}
             {/* <img src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg" alt="BigCo Inc. logo"/> */}
             <Menu />

@@ -18,7 +18,8 @@ import RightSideHome from "../message/RightSideHome";
 const RightSideBar = () => {
   const { auth, suggestions } = useSelector((state) => state);
   const dispatch = useDispatch();
-
+  console.log(suggestions.user);
+  console.log(auth.user);
   return (
     <div className="home-right">
       {/* <UserCard user={auth.user} /> */}
@@ -103,7 +104,7 @@ const RightSideBar = () => {
         </div>
       </div> */}
       <div className="d-flex justify-content-between align-items-center my-2">
-        <h4 className="req-text">Request</h4>
+        <h4 className="req-text">Suggestions</h4>
         {!suggestions.loading && (
           <i
             className="fas fa-redo"

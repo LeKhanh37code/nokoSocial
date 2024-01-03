@@ -15,6 +15,11 @@ const postReducer = (state = initialState, action) => {
                 ...state,
                 posts: [action.payload, ...state.posts]
             };
+            case POST_TYPES.CREATE_POST_DATE:
+                return {
+                    ...state,
+                    posts: [action.payload, ...state.posts]
+                };
         case POST_TYPES.LOADING_POST:
             return {
                 ...state,

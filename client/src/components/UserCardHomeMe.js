@@ -11,8 +11,11 @@ const UserCardHomeMe = ({
   setShowFollowers,
   setShowFollowing,
   msg,
+  url
+  
 }) => {
   console.log(user._id);
+  console.log(url);
   const { theme } = useSelector((state) => state);
 
   const handleCloseAll = () => {
@@ -22,6 +25,8 @@ const UserCardHomeMe = ({
   };
 
   const showMsg = (user) => {
+
+   
     return (
       <>
         <div style={{ filter: theme ? "invert(1)" : "invert(0)" }}>

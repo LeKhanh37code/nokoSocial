@@ -4,6 +4,7 @@ const auth = require('../middleware/auth')
 
 router.route('/posts')
     .post(auth, postCtrl.createPost)
+    .post(auth, postCtrl.createPostDate)
     .get(auth, postCtrl.getPosts)
 
 router.route('/post/:id')

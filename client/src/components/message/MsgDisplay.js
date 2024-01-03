@@ -16,7 +16,8 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
       dispatch(deleteMessages({ msg, data, auth }));
     }
   };
-
+  const isLocalhostLink =
+    msg?.text && msg.text.includes("http://localhost:3000");
   return (
     <>
       <div className="chat_title">
@@ -39,7 +40,13 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
               className="chat_text"
               style={{ filter: theme ? "invert(1)" : "invert(0)" }}
             >
-              {msg?.text}
+              {isLocalhostLink ? (
+                <a href={msg.text} target="_blank" rel="noopener noreferrer">
+                  {msg.text}
+                </a>
+              ) : (
+                <>{msg?.text}</>
+              )}
             </div>
           )}
           {msg.media?.map((item, index) => (

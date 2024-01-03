@@ -110,10 +110,10 @@ const CardFooter = ({post}) => {
             </div>
 
             {
-                isShare && <ShareModal url={`${BASE_URL}/post/${post._id}`} theme={theme} />
+                isShare && <ShareModal url={`http://localhost:3000/post/${post._id}`} theme={theme} />
             }
         </div>
     )
 }
-
+// isShare && <ShareModal url={`${BASE_URL}post/${post._id}`} theme={theme} />
 export default CardFooter

@@ -15,11 +15,18 @@ const CardBody = ({ post, theme }) => {
         }}
       >
         <span>
-          {post.content.length < 60
-            ? post.content
-            : readMore
-            ? post.content + " "
-            : post.content.slice(0, 60) + "....."}
+          {post.content.includes("dating-") ? (
+            <></>
+          ) : (
+            <>
+              {" "}
+              {post.content.length < 60
+                ? post.content
+                : readMore
+                ? post.content + " "
+                : post.content.slice(0, 60) + "....."}
+            </>
+          )}
         </span>
         {post.content.length > 60 && (
           <span className="readMore" onClick={() => setReadMore(!readMore)}>

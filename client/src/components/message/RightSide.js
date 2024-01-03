@@ -19,11 +19,25 @@ const RightSide = () => {
   const { auth, message, theme, socket, peer } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const { id } = useParams();
+  const { id  } = useParams();
   const [user, setUser] = useState([]);
   const [text, setText] = useState("");
   const [media, setMedia] = useState([]);
   const [loadMedia, setLoadMedia] = useState(false);
+
+  const [link, setLink] = useState("");
+  useEffect(() => {
+    // Lấy tham số từ URL sử dụng window.location
+    const urlParams = new URLSearchParams(window.location.search);
+    const param = urlParams.get('param');
+    setLink(param);
+    setText(param);
+    // Sử dụng tham số trong component của bạn
+    console.log('Tham số từ URL:', param);
+
+    // Các công việc khác có thể thực hiện trong useEffect
+  }, []);
+console.log("123", link)
 
   const refDisplay = useRef();
   const pageEnd = useRef();
@@ -82,6 +96,8 @@ const RightSide = () => {
     newArr.splice(index, 1);
     setMedia(newArr);
   };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
